@@ -1,0 +1,163 @@
+# [문제해결 02-02] 객체 배열 및 변수 종류
+
+## 1. 객체 배열
+
+- 많은 수의 객체를 다뤄야할 때, 배열로 다루면 편함
+- 객체 배열 안에 객체의 주소가 저장됨.
+- 객체 배열은 참조 변수들을 하나로 묶은 참조 변수 배열
+- 객체 배열은 같은 타입의 변수만 저장 가능.
+- `TV [] tvArr = new TV[3];`  길이가 3인 TV타입의 참조 변수 배열
+- 객체 배열을 생성하는 것은, 그저 객체를 다루기 위한 참조 변수들이 만들어진 것일 뿐! 아직 객체가 생성 된 것은 아니다.
+
+```jsx
+class Tv { 
+     // Tv의 속성(멤버변수) 
+     String color;           // 색상 
+     boolean power;          // 전원상태(on/off) 
+     int channel;          	 // 채널 
+
+     // Tv의 기능(메서드) 
+     void power()   { power = !power; }  // TV를 켜거나 끄는 기능을 하는 메서드 
+     void channelUp()   {  ++channel; }  // TV의 채널을 높이는 기능을 하는 메서드 
+     void channelDown() {  --channel; }  // TV의 채널을 낮추는 기능을 하는 메서드  
+}
+
+class TvTest4 {
+	public static void main(String args[]) {
+		Tv[] tvArr = new Tv[3]; // 길이가 3인 Tv객체 배열
+
+		// Tv객체를 생성해서 Tv객체 배열의 각 요소에 저장
+		for(int i=0; i < tvArr.length;i++) {
+			tvArr[i] = new Tv();
+			tvArr[i].channel = i+10; // tvArr[i]의 channel에 i+10을 저장
+		}
+
+		for(int i=0; i < tvArr.length;i++) {
+			tvArr[i].channelUp();  // tvArr[i]의 메서드를 호출. 채널이 1증가
+			System.out.printf("tvArr[%d].channel=%d%n",i,tvArr[i].channel);
+		}
+	} // main의 끝
+} 
+```
+
+## 2. 클래스 변수, 인스턴스 변수
+
+- 인스턴스 변수는 인스턴스가 생성될 때 마다 생성되므로 객체마다 각기 다른 값을 유지할 수 있지만, 클래스 변수는 모든 객체가 하나의 저장공간을 공유하므로, 항상 공통된 값을 가진다.
+
+```jsx
+class Card {
+	String kind ;				// 카드의 무늬 - 인스턴스 변수
+	int number;				    // 카드의 숫자 - 인스턴스 변수
+	static int width = 100;		// 카드의 폭  - 클래스 변수
+	static int height = 250;	// 카드의 높이 - 클래스 변수
+}
+
+class CardTest{
+	public static void main(String args[]) {
+		System.out.println("Card.width = "  + Card.width);
+		System.out.println("Card.height = " + Card.height);
+
+		Card c1 = new Card();
+		c1.kind = "Heart";
+		c1.number = 7;
+
+		Card c2 = new Card();
+		c2.kind = "Spade";
+		c2.number = 4;
+
+		System.out.println("c1은 " + c1.kind + ", " + c1.number + "이며, 크기는 (" + c1.width + ", " + c1.height + ")" );
+		System.out.println("c2는 " + c2.kind + ", " + c2.number + "이며, 크기는 (" + c2.width + ", " + c2.height + ")" );		
+
+		System.out.println("c1의 width와 height를 각각 50, 80으로 변경합니다.");
+		c1.width = 50;
+		c1.height = 80;
+
+		System.out.println("c1은 " + c1.kind + ", " + c1.number + "이며, 크기는 (" + c1.width + ", " + c1.height + ")" );
+		System.out.println("c2는 " + c2.kind + ", " + c2.number + "이며, 크기는 (" + c2.width + ", " + c2.height + ")" );
+	}
+ }
+```
+
+### **클래스 변수(Static 멤버)**
+
+- 클래스 내에 `Static` 키워드로 선언된 변수
+- 처음 JVM이 실행되어 클래스가 메모리에 올라갈 때 ~ 프로그램이 종료될 때까지 유지
+- 클래스가 여러 번 생성되어도 `Static` 변수는 처음 **딱 한 번**만 생성됨
+- 동일한 클래스의 모든 객체들에 의해서 공유됨
+- `public`을 붙이면 같은 프로그램 내에 어디서든 접근할 수 있는 **‘전역 변수’**가 된다.
+
+### **인스턴스 변수(Non-static 멤버)**
+
+- 클래스 내에 선언된 변수
+- 객체 생성 시마다 매번 새로운 변수가 생성됨
+- 클래스 변수와 달리 공유되지 않음
+- 따라서 **인스턴스 변수의 값을 읽어오거나 저장하려면 인스턴스를 먼저 생성해야 한다. (new 연산자 활용)**
+
+```java
+클래스명 변수명; // 클래스의 객체를 참조하기 위한 참조변수를 선언
+변수명 = new 클래스명(); // 클래스의 객체를 생성 후, 객체의 주소를 참조변수에 저장
+Tv t;
+t = new Tv(); 
+-> Tv t = new Tv();
+```
+
+### + 지역변수
+
+- **메소드 내에 선언**되며 메소드 안에서만 사용 가능한 변수
+- 메소드 실행 시 생성(메모리 할당)되며, 메소드가 종료되면 사라져서 사용할 수 없게 된다.
+- **매개변수**
+    - 흔히 **‘파라미터’**라고 불리며, 메소드에서 입력값을 받을 때 사용되는 변수.
+    - 인자(파라미터)값은 호출 시 메소드 입력부의 넣는 값이며 이 값은 매개변수에 복사되어 대입된다.
+    - 매개변수도 매소드 내에 선언된 것으로 간주하므로 지역변수이다
+    - **기본형 매개변수**
+        - 변수의 값을 읽기만 할 수 있음
+        
+        ```jsx
+        class Data { int x; }
+        
+        class PrimitiveParamEx {
+        	public static void main(String[] args) {
+        		Data d = new Data();
+        		d.x = 10;
+        		System.out.println("main() : x = " + d.x);
+        
+        		change(d.x);
+        		System.out.println("After change(d.x)");
+        		System.out.println("main() : x = " + d.x);
+        	}
+        
+        	static void change(int x) {
+        		x = 1000;
+        		System.out.println("change() : x = " + x);
+        	}
+        }
+        ```
+        
+    - **참조형 매개변수**
+        - 변수의 값을 읽고 변경 할 수 있음
+        
+        ```jsx
+         class Data { int x; }
+        
+        class ReferenceParamEx {
+        	public static void main(String[] args) {
+        
+        		Data d = new Data();
+        		d.x = 10;
+        		System.out.println("main() : x = " + d.x);
+        
+        		change(d);
+        		System.out.println("After change(d)");
+        		System.out.println("main() : x = " + d.x);
+        
+        	}
+        
+        	static void change(Data d) {
+        		d.x = 1000;
+        		System.out.println("change() : x = " + d.x);
+        	}
+        }
+        ```
+        
+
+### 클래스 변수 / 인스턴스 변수 / 지역 변수의 차이
