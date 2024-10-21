@@ -24,9 +24,7 @@
 - isEmpty : 큐가 비었는지
 - front : 큐의 front에 있는 값 출력(큐의 맨 앞)
 - back : 큐의 rear에 있는 값 출력
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5af00c9a-3d05-448f-a1d8-fe2258567f98/7d4a1390-ad89-406d-a381-26f384f5973a/Untitled.png)
-
+![alt text](image-1.png)
 ### 선형 큐**(Linear Queue)의 특징**
 
 - 정해진 리스트 배열 크기 내에서 각 인덱스를 front와 rear이 각각 한 번만 지나칠 수 있다.
