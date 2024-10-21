@@ -1,6 +1,6 @@
 # 자바스크립트와 차이점
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/434740fb-eab5-4e66-8a89-8a935bf018dc/Untitled.png)
+![alt text](image.png)
 
 # 타입스크립트의 특징
 
