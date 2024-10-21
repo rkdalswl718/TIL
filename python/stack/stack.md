@@ -1,6 +1,6 @@
 # 스택(Stack)이란?
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5af00c9a-3d05-448f-a1d8-fe2258567f98/39a42116-0aa8-44cd-b50d-52093185995f/Untitled.png)
+![alt text](image.png)
 
 ### 개념
 
