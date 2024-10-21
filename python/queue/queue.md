@@ -1,8 +1,7 @@
 ## 큐(QUEUE)
 
 사전적 의미 : (무엇을 기다리는 사람, 자동차 등의) **줄** , 혹은 **줄을 서서 기다리는 것**
-
-![Untitled.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/5af00c9a-3d05-448f-a1d8-fe2258567f98/f1b83180-01f4-4ab5-9943-8fe0444472ac/Untitled.png)
+![alt text](image.png)
 
 ## 큐(Queue)의 특성
 
