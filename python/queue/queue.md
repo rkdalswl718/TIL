@@ -32,7 +32,7 @@
 - 선형 큐에서는 rear가 배열 크기와 같아지면 큐가 꽉 찼다고 판단
 - front와 rear가 동일한 위치를 가리키면 큐가 비었다고 판단
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5af00c9a-3d05-448f-a1d8-fe2258567f98/7a2f0c68-fc4d-4fbb-a288-f80d6697a768/Untitled.png)
+![alt text](image-2.png)
 
 ### 선형 큐**(Linear Queue)의 문제점**
 
@@ -42,19 +42,15 @@
 ### 2. 원형 큐**(Circular Queue)**
 
 - 큐의 시작과 끝이 이어져있어 효율적으로 사용할 수 있음.
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5af00c9a-3d05-448f-a1d8-fe2258567f98/9188b5e5-c161-484a-8ee7-d9a23461d64b/Untitled.png)
-
+![alt text](image-3.png)
 기본 큐의 처음과 끝을 논리적으로 연결하여 오버플로 발생 보완
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5af00c9a-3d05-448f-a1d8-fe2258567f98/81360ec4-a50d-491c-81f6-bb9cd762e1a0/Untitled.png)
+![alt text](image-4.png)
 
 - 초기 상태 : **front = rear = 0** (=공백 상태), 최대 큐 사이즈 n
 - 원형 큐의 enQueue : rear = (rear +1) % n
 - 원형 큐의 deQueue : front = (front+1) % n
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5af00c9a-3d05-448f-a1d8-fe2258567f98/56b50c04-efdc-4f0f-8319-93941e07e212/Untitled.png)
-
+![alt text](image-5.png)
 ***원형 큐의 문제 : full, empty 상태일 때 front = rear (값이 같음)**
 
 **→  해결하기 위해 front와 rear 사이에 하나의 공백을 둠.**
